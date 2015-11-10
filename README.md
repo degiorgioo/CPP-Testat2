@@ -1,4 +1,4 @@
-C++ Testast
+C++ Testat
 Word class 
 kwic class
 
