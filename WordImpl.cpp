@@ -2,7 +2,7 @@
 #include <iostream>
 #include <istream>
 
-Word::Word( const std::string value) :value{ value }{};
+Word::Word( const std::string value ) :value{ value }{};
 
 void Word::read(std::istream& input){
 			std::string temp{};

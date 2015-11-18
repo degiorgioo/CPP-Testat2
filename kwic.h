@@ -11,6 +11,14 @@
 
 std::set<std::vector<Word>> rotate(std::istream &is, std::ostream &os);
 
+inline std::ostream& operator <<(std::ostream &out, const std::set<std::vector<Word>> &rotatedSentences){
+	for(auto sentence: rotatedSentences){
+		copy(begin(sentence), end(sentence), std::ostream_iterator<Word>{out, " "});
+		out << "\n";
+	}
+	return out;
+};
+
 inline std::ostream& operator <<(std::ostream &out, const std::vector<Word> &sentence){
 	copy(begin(sentence), end(sentence), std::ostream_iterator<Word>{out, " "});
 	return out;
@@ -22,10 +30,11 @@ inline std::istream& operator >>(std::istream &in, std::vector<Word> &sentence){
 	std::istream_iterator<Word> eof{};
 	std::string line{};
 
-	getline(in, line);
-
-	std::istringstream linestringstream{ line };
-	sentence = std::vector<Word>{std::istream_iterator<Word> {linestringstream}, eof};
+	while(in.good()){
+		getline(in, line);
+		std::istringstream linestringstream{ line };
+		sentence = std::vector<Word>{std::istream_iterator<Word> {linestringstream}, eof};
+	}
 
 	return in;
 };

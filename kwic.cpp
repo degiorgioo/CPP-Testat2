@@ -6,7 +6,6 @@
 #include <sstream>
 #include <algorithm>
 
-
 std::set<std::vector<Word>> rotate(std::istream &in, std::ostream &out){
 
 	std::istream_iterator<Word> input{in};
@@ -16,10 +15,9 @@ std::set<std::vector<Word>> rotate(std::istream &in, std::ostream &out){
 
 	std::set<std::vector<Word>> result{};
 
-	for(int i = 0; i < words.size();i++){
+	for(auto word: words){
 		rotate(begin(words), begin(words) + 1, end(words));
 		result.insert(words);
 	}
-
 	return result;
 }

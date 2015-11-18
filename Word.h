@@ -16,7 +16,7 @@ class Word{
 
 		//this < w
 		inline bool operator <( const Word &w ) const {
-			return std::lexicographical_compare(begin((*this).value), end((*this).value),begin(w.value), end(w.value), myComparator);
+			return std::lexicographical_compare(begin((*this).value), end((*this).value),begin(w.value), end(w.value), myLessThanComparator);
 		}
 
 		inline bool operator >( const Word &w ) const {
@@ -24,27 +24,26 @@ class Word{
 		}
 
 		inline bool operator ==( const Word &w ) const {
-			return (!((*this) < w) && ((*this) > w));
+			return std::equal(begin((*this).value), end((*this).value), begin(w.value), end(w.value));
 		}
 
-
 		inline bool operator <=( const Word &w ) const {
-			return (!((*this) == w) || ((*this) < w));
+			return ((*this) == w) || ((*this) < w);
 		}
 
 		inline bool operator >=( const Word &w ) const {
-			return (!((*this) == w) || ((*this) > w));
+			return ((*this) == w) || ((*this) > w);
 		}
 
 		inline bool operator !=( const Word &w ) const {
-			return (!((*this) == w));
+			return !((*this) == w);
 		}
 
 
 	private:
 		std::string value{};
 
-		static bool myComparator (char c1, char c2){
+		static bool myLessThanComparator (char c1, char c2){
 			return std::tolower(c1) < std::tolower(c2);
 		}
 
