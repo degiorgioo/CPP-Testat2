@@ -8,16 +8,15 @@
 
 std::set<std::vector<Word>> rotate(std::istream &in, std::ostream &out){
 
-	std::istream_iterator<Word> input{in};
-	std::istream_iterator<Word> eof{};
-
-	std::vector<Word> words{input, eof};
-
+	std::vector<Word> words{};
 	std::set<std::vector<Word>> result{};
+
+	in >> words;
 
 	for(auto word: words){
 		rotate(begin(words), begin(words) + 1, end(words));
 		result.insert(words);
 	}
+
 	return result;
 }
