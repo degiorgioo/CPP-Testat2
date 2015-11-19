@@ -51,7 +51,7 @@ std::set<std::vector<Word>> rotate(std::istream &in, std::ostream &out){
 		}
 	}
 
-	std::cout << result;
+	out << result;
 
 	return result;
 }
