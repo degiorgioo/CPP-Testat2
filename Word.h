@@ -3,13 +3,16 @@
 
 #include <iosfwd>
 #include <string>
+#include <iostream>
+#include <algorithm>
+#include <string>
 
 class Word{
 
 	public:
 		Word():value{""}{};
 
-		Word( const std::string value);
+		Word( const std::string value );
 
 		void read(std::istream &input);
 		void print(std::ostream &output) const;
@@ -24,7 +27,14 @@ class Word{
 		}
 
 		inline bool operator ==( const Word &w ) const {
-			return std::equal(begin((*this).value), end((*this).value), begin(w.value), end(w.value));
+
+			std::string rightString{(*this).value};
+			std::string leftString{w.value};
+
+			transform(begin((*this).value), end((*this).value), begin(rightString), ::tolower);
+			transform(begin(w.value), end(w.value),begin(leftString), ::tolower);
+
+			return std::equal(begin(rightString), end(rightString), begin(leftString), end(leftString));
 		}
 
 		inline bool operator <=( const Word &w ) const {
@@ -46,6 +56,7 @@ class Word{
 		static bool myLessThanComparator (char c1, char c2){
 			return std::tolower(c1) < std::tolower(c2);
 		}
+
 
 };
 

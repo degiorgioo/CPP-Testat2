@@ -1,8 +1,18 @@
 #include "Word.h"
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 #include <istream>
+#include <sstream>
 
-Word::Word( const std::string value ) :value{ value }{};
+Word::Word( const std::string value ){
+
+	if(std::all_of(begin(value), end(value), ::isalpha)){
+		(*this).value = value;
+	}else{
+		throw new std::invalid_argument("This is not a word.");
+	}
+};
 
 void Word::read(std::istream& input){
 			std::string temp{};
@@ -19,6 +29,8 @@ void Word::read(std::istream& input){
 
 			if(!(temp.empty())){
 				(*this).value = temp;
+			}else{
+				input.setstate(input.failbit);
 			}
 };
 
