@@ -49,15 +49,12 @@ class Word{
 			return !((*this) == w);
 		}
 
-
 	private:
 		std::string value{};
 
 		static bool myLessThanComparator (char c1, char c2){
 			return std::tolower(c1) < std::tolower(c2);
 		}
-
-
 };
 
 	inline std::ostream& operator<<(std::ostream& out, const Word &w){

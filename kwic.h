@@ -10,6 +10,6 @@
 #include <algorithm>
 #include "Word.h"
 
-std::set<std::vector<Word>> rotate(std::istream &is, std::ostream &os);
+void rotate(std::istream &is, std::ostream &os);
 
 #endif /* KWIC_H_ */

@@ -4,13 +4,13 @@
 #include <algorithm>
 #include <istream>
 #include <sstream>
+#include <stdexcept>
 
 Word::Word( const std::string value ){
-
 	if(std::all_of(begin(value), end(value), ::isalpha)){
 		(*this).value = value;
 	}else{
-		throw new std::invalid_argument("This is not a word.");
+		throw std::invalid_argument("This is not a word.");
 	}
 };
 

@@ -34,7 +34,7 @@ inline std::istream& operator >>(std::istream &in, std::vector<Word> &sentence){
 
 void rotate(std::istream &in, std::ostream &out){
 
-	std::set<std::vector<Word>> allLines{};
+	std::vector<std::vector<Word>> allLines{};
 	std::set<std::vector<Word>> result{};
 	std::istream_iterator<Word> eof{};
 	std::string line{};
@@ -50,6 +50,5 @@ void rotate(std::istream &in, std::ostream &out){
 			result.insert(line);
 		}
 	}
-
 	out << result;
 }
